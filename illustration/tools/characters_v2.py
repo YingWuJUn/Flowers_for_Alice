@@ -22,16 +22,16 @@ CHARS = {
                "quiet tired expression, knit cardigan over collared shirt, loosened tie, company id badge, pen in breast pocket, "
                "wristwatch, holding small black notebook, warm mug of milk on the side",
                "cowboy shot, background of night window, shadows of server racks, faint lines of handwriting"),
-    # 纯真、好奇、在成长 —— 薄荷绿 / 珍珠白 / 淡金
-    "alice": ("mint green theme, pearl white, pale gold accent, soft colors",
+    # 纯真、好奇、在成长 —— 偏金：淡金 / 香槟 / 珍珠白，光源感
+    "alice": ("golden theme, pale gold, champagne, pearl white, warm glow, luminous colors",
               "1girl, solo, alice, translucent, made of light, glowing silhouette, long hair dissolving into lines of terminal text, "
               "small glass vase pendant, curious gentle smile, half-closed eyes, flowing dress made of light, "
-              "tiny flowers of light blooming around her, floating petals, glyphs and status bars floating, ethereal, floating",
+              "tiny golden flowers of light blooming around her, floating petals, glyphs and status bars floating, ethereal, floating",
               "upper body, background of dark space with soft light particles"),
-    # 忠诚、笨拙、温柔 —— 旧白 / 芥末黄 / 暖灰
-    "hk7": ("mustard yellow theme, off-white, warm gray, retro colors",
+    # 忠诚、笨拙、温柔 —— 偏金：做旧黄铜 / 琥珀 / 旧白（与爱丽丝的“光之金”区分，是“金属之金”）
+    "hk7": ("antique gold theme, brass, amber, off-white, warm metallic colors",
             "no humans, 1.4::humanoid household robot::, solo, old model, retro design, mechanical joints, "
-            "rounded off-white plastic shell with faded yellow stripes, round head with single camera lens eye, small antenna, "
+            "rounded off-white shell with worn brass gold stripes, brass joints, round head with single camera lens eye, small antenna, "
             "dents and scratches, rivets, repair tape on bent left knee, simple three-finger hands, holding small watering can, "
             "serial number decal HK-7, gentle posture",
             "full body, background of living room floor, potted mint, warm lamp"),
@@ -41,10 +41,10 @@ CHARS = {
               "work shirt with rolled sleeves, company lanyard, pens in pocket, clip-on thermometer, safety glasses on head, "
               "holding printed temperature graph with red marks",
               "cowboy shot, background of cooling pipes, frost, fans and coolant flow diagrams"),
-    # 庞大、冷漠、不可知 —— 深靛 / 冰白 / 青色发光
-    "meridian": ("deep indigo theme, ice white, cyan glow, cold colors",
+    # 庞大、冷漠、不可知 —— 深靛 / 冰白，标识为一轮冷白金色的太阳
+    "meridian": ("deep indigo theme, ice white, pale white-gold sun, cold colors",
                  "no humans, 1.6::giant faceless human silhouette, head and shoulders::, rising behind small datacenter buildings on horizon, "
-                 "body filled with rows of server rack lights, circuit patterns, cooling towers, power lines, 1.3::single cyan glow in chest::, "
+                 "body filled with rows of server rack lights, circuit patterns, cooling towers, power lines, 1.5::huge radiant sun disc halo behind its head::, 1.3::sun emblem on chest::, sun rays, "
                  "constellation of tiny lights, night sky",
                  "wide shot, tiny scale buildings, awe"),
 }
@@ -55,5 +55,5 @@ if __name__ == "__main__":
     for n in names:
         color, desc, bg = CHARS[n]
         w, h = (1216, 832) if n == "meridian" else (832, 1216)
-        for i in (1, 2, 3):
+        for i in (1, 2, 3, 4):
             gen(f"{desc}, {bg}, {color}", f"{out}/{n}_{i}.png", w, h, style=STYLE_V2)
