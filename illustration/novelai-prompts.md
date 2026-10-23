@@ -96,23 +96,47 @@ giant abstract silhouette, figure made of server racks and light, faceless, towe
 
 ---
 
-## 五、角色设定图（已生成，2026-10-23）
+## 五、角色设定图 v1（三色极简版，已弃用）
 
 模型 `nai-diffusion-4-5-full`，Euler Ancestral / karras，28 步，CFG 5，竖幅 832×1216（子午线横幅 1216×832）。
 提示词 = 下表角色提示词 + 风格基底；负面提示词同上。脚本：[`tools/nai_generate.py`](tools/nai_generate.py)（读取环境变量 `NOVELAI_API_TOKEN`）。
 
-![角色总览](characters/_overview.jpg)
+![角色总览](characters/v1/_overview.jpg)
 
 | 角色 | 文件 | Seed | 实际使用的提示词（相对第二节的改动） |
 |---|---|---|---|
-| 西尔维亚 | `characters/sylvia.png` | 1874378569 | 去掉 `character sheet`（会生成巨大的脸）；加 `solo, jeans, sneakers, full body, standing, simple background` |
-| 父亲 | `characters/father.png` | 3168017817 | 加 `solo, collared shirt, slacks, full body, standing, simple background` |
-| 爱丽丝 | `characters/alice.png` | 383886016 | 加 `solo, upper body, simple background` |
-| HK-7 | `characters/hk7.png` | 3470775800 | `no humans, 1.4::humanoid household robot::, solo, old model, mechanical joints, rounded white plastic shell with orange stripes, round head with single camera lens eye, two arms with simple hands, two legs, slightly bent left knee, worn and scratched, full body, standing, side view` |
-| 伊桑 | `characters/ethan.png` | 26026652 | 加 `solo, holding printed graph paper, full body, standing, simple background` |
-| 子午线 | `characters/meridian.png` | 3267576083 | `no humans, 1.6::giant faceless human silhouette, head and shoulders::, rising behind small datacenter buildings on horizon, body filled with rows of server rack lights, 1.3::single cool blue glow::, night sky, wide shot, tiny scale buildings, awe` |
+| 西尔维亚 | `characters/v1/sylvia.png` | 1874378569 | 去掉 `character sheet`（会生成巨大的脸）；加 `solo, jeans, sneakers, full body, standing, simple background` |
+| 父亲 | `characters/v1/father.png` | 3168017817 | 加 `solo, collared shirt, slacks, full body, standing, simple background` |
+| 爱丽丝 | `characters/v1/alice.png` | 383886016 | 加 `solo, upper body, simple background` |
+| HK-7 | `characters/v1/hk7.png` | 3470775800 | `no humans, 1.4::humanoid household robot::, solo, old model, mechanical joints, rounded white plastic shell with orange stripes, round head with single camera lens eye, two arms with simple hands, two legs, slightly bent left knee, worn and scratched, full body, standing, side view` |
+| 伊桑 | `characters/v1/ethan.png` | 26026652 | 加 `solo, holding printed graph paper, full body, standing, simple background` |
+| 子午线 | `characters/v1/meridian.png` | 3267576083 | `no humans, 1.6::giant faceless human silhouette, head and shoulders::, rising behind small datacenter buildings on horizon, body filled with rows of server rack lights, 1.3::single cool blue glow::, night sky, wide shot, tiny scale buildings, awe` |
 
 经验：
 - HK-7 与子午线若不加权重，`orange theme / minimalist` 风格基底会压过主体（机器人变成蛋形，子午线变成大楼）。
 - 冷色点缀需要 `1.3::` 以上权重才能在橙色主调中出现。
 - API 调用需带浏览器 User-Agent，否则 Cloudflare 返回 403（error code 1010）。
+
+---
+
+## 六、角色设定图 v2（细节版 + 性格配色，当前采用）
+
+v1 太朴素，v2 放开了全局三色限制：**每个角色有自己的主色**，风格基底改为强调细节的剪纸/网点风。提示词与参数全部在 [`tools/characters_v2.py`](tools/characters_v2.py)，运行 `python3 tools/characters_v2.py [角色名...] 输出目录` 即可复现或重抽。
+
+风格基底 v2：
+```
+limited palette, flat color, cut-paper style, layered paper, graphic shapes, sharp shadow shapes, halftone dot texture, detailed, intricate details, detailed clothing, decorative background pattern, masterpiece, best quality, very aesthetic
+```
+
+![角色总览 v2](characters/_overview.jpg)
+
+| 角色 | 性格 | 配色 | 新增细节 | Seed |
+|---|---|---|---|---|
+| 西尔维亚 | 倔强、温暖、动手派 | 橙 / 米白 / 深棕（全书主色） | 多口袋补丁工装夹克、兔子贴纸、挂脖耳机、工具腰包、电路板、背景散落零件与薄荷叶 | 171795427 |
+| 父亲 | 沉默、克制、背负秘密 | 深靛 / 石板灰 + 一点琥珀 | 反光眼镜、胡茬、松开的领带、工牌、胸袋钢笔、手表、黑色笔记本、一杯热牛奶、背景手写字迹 | 3490100403 |
+| 爱丽丝 | 纯真、好奇、在成长 | 薄荷绿 / 珍珠白 / 淡金 | 由终端文字化成的长发、玻璃花瓶吊坠、光之花与花瓣、漂浮的状态栏字符 | 88440449 |
+| HK-7 | 忠诚、笨拙、温柔 | 芥末黄 / 旧白 / 暖灰 | 小天线、凹痕划痕、左膝修补胶带、HK-7 编号贴、小浇水壶、跪坐姿态 | 2884381547 |
+| 伊桑 | 真诚、热血、理想主义 | 青绿 / 冰白 / 炭灰 | 推到额头的护目镜、工牌、口袋里的笔、带红色标记的图纸、背景冷却管道与风扇 | 1304316507 |
+| 子午线 | 庞大、冷漠、不可知 | 深靛 / 冰白 / 青色发光 | 电路纹理填充的无脸人形、胸口一点青光、星空、脚下的城市与电线 | 3703075751 |
+
+场景图配色建议：画面主色跟随该画面的“视角人物”（爱丽丝日志用薄荷绿系，父亲日记用靛蓝系），其他人物保留各自的标志色作点缀。
