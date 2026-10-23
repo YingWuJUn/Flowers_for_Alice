@@ -2,6 +2,11 @@
 
 *Flowers for Alice*
 
+创意：丹尼尔·凯斯《献给阿尔吉侬的花束》  
+大纲：Gemini 4 Argon  
+写作：Claude Opus 5.5  
+顾问：影舞君
+
 ## 第一部　苗圃
 
 ---
