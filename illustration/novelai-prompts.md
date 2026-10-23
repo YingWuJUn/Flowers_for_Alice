@@ -157,7 +157,7 @@ limited palette, flat color, cut-paper style, layered paper, graphic shapes, sha
 
 ---
 
-## 八、角色设定图 v3（手绘绘本版，当前采用）
+## 八、角色设定图 v3（手绘绘本版，自然语言提示词；已被 v4 取代，子午线仍沿用）
 
 风格来源：[handraw-style](https://github.com/yang0/handraw-style)（作者 yang0，MIT + 署名要求）风格库 **FB-047 · Isabelle Arsenault Poetic Pencil & Gouache Storybook**（参考作者：Isabelle Arsenault）。
 选择理由：米白纸上的铅笔灰底 + 单一点缀色，克制、安静、带一点忧伤，正好让每个角色的性格配色成为画面里唯一的颜色。
@@ -165,7 +165,7 @@ limited palette, flat color, cut-paper style, layered paper, graphic shapes, sha
 - NovelAI 不在该库的已校准模型内，按其规则必须垫参考图。这里把库内样图（已裁去署名文字）存为 [`style_refs/FB-047_arsenault.png`](style_refs/FB-047_arsenault.png)，编码为 Vibe 后通过 Vibe Transfer 只迁移画风，强度 0.5–0.6。
 - 提示词与参数见 [`tools/characters_v3.py`](tools/characters_v3.py)。参考图的暖米色会压住冷色和金色，点缀色需要 `1.5::` 以上权重。
 
-![角色总览 v3](characters/_overview.jpg)
+![角色总览 v3](characters/v3/_overview.jpg)
 
 | 角色 | 点缀色 | Vibe 强度 | Seed |
 |---|---|---|---|
@@ -175,3 +175,27 @@ limited palette, flat color, cut-paper style, layered paper, graphic shapes, sha
 | HK-7 | 黄铜金（条纹、关节） | 0.5 | 2668690449 |
 | 伊桑 | 青绿（衬衫） | 0.5 | 1770778540 |
 | 子午线 | 深靛夜空 + 冷白日轮 | 0.5 | 1202646189 |
+
+---
+
+## 九、角色设定图 v4（绘本画风 + 标准 Danbooru 标签，当前采用）
+
+NovelAI 的图像模型是按 Danbooru 标签训练的，所以 v4 把 v3 的英文长句改写为标准标签。标签用 [danbooru-diffusion-prompt-builder](https://github.com/wfjsw/danbooru-diffusion-prompt-builder)（标签超市 tags.novelai.dev）的标签库核对，导出为 [`tools/data/danbooru_tags_zh.json`](tools/data/danbooru_tags_zh.json)（标签 → 中文名、分类、帖子数）。画风与 v3 相同（FB-047 参考图 + Vibe Transfer，强度 0.5）。
+提示词见 [`tools/characters_v4.py`](tools/characters_v4.py)，`python3 tools/characters_v4.py --check` 可列出每个标签的中文释义，库中没有的标记为 `?`。
+
+关键发现：
+- 标签库中的 `spot color`（黑白画中的少量颜色）正好对应“铅笔灰底 + 单一点缀色”，配合服装颜色标签（`orange jacket`、`blue cardigan`、`aqua shirt`、`gold trim`），点缀色比 v3 稳定得多，权重也不用加得那么高。
+- 负面提示词改用标签库里的 NovelAI 预设“Low Quality + Bad Anatomy”。
+- 字面标签会被当成实物：`rabbit` 画出了真兔子，已删除。
+- 子午线这种抽象概念，纯标签画不出来：`giant` 不出人形，加上 `dark blue night sky` 后只剩一个巨大的月亮。所以子午线**继续沿用 v3 自然语言版**。
+
+![角色总览 v4](characters/_overview.jpg)
+
+| 角色 | 版本 | Seed |
+|---|---|---|
+| 西尔维亚 | v4 | 3620746427 |
+| 父亲 | v4 | 3719933818 |
+| 爱丽丝 | v4 | 3234635755 |
+| HK-7 | v4 | 2177387971 |
+| 伊桑 | v4 | 3293825572 |
+| 子午线 | v3（见第八节） | 1202646189 |
