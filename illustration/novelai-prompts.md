@@ -93,3 +93,26 @@ giant abstract silhouette, figure made of server racks and light, faceless, towe
 2. 用 01、09、12、19 四张做风格样片，确认三色平涂在不同场景都成立。
 3. 批量生成其余 16 张，每张出 4 张挑 1 张。
 4. 统一校色到三色调色板，再排入小说。
+
+---
+
+## 五、角色设定图（已生成，2026-10-23）
+
+模型 `nai-diffusion-4-5-full`，Euler Ancestral / karras，28 步，CFG 5，竖幅 832×1216（子午线横幅 1216×832）。
+提示词 = 下表角色提示词 + 风格基底；负面提示词同上。脚本：[`tools/nai_generate.py`](tools/nai_generate.py)（读取环境变量 `NOVELAI_API_TOKEN`）。
+
+![角色总览](characters/_overview.jpg)
+
+| 角色 | 文件 | Seed | 实际使用的提示词（相对第二节的改动） |
+|---|---|---|---|
+| 西尔维亚 | `characters/sylvia.png` | 1874378569 | 去掉 `character sheet`（会生成巨大的脸）；加 `solo, jeans, sneakers, full body, standing, simple background` |
+| 父亲 | `characters/father.png` | 3168017817 | 加 `solo, collared shirt, slacks, full body, standing, simple background` |
+| 爱丽丝 | `characters/alice.png` | 383886016 | 加 `solo, upper body, simple background` |
+| HK-7 | `characters/hk7.png` | 3470775800 | `no humans, 1.4::humanoid household robot::, solo, old model, mechanical joints, rounded white plastic shell with orange stripes, round head with single camera lens eye, two arms with simple hands, two legs, slightly bent left knee, worn and scratched, full body, standing, side view` |
+| 伊桑 | `characters/ethan.png` | 26026652 | 加 `solo, holding printed graph paper, full body, standing, simple background` |
+| 子午线 | `characters/meridian.png` | 3267576083 | `no humans, 1.6::giant faceless human silhouette, head and shoulders::, rising behind small datacenter buildings on horizon, body filled with rows of server rack lights, 1.3::single cool blue glow::, night sky, wide shot, tiny scale buildings, awe` |
+
+经验：
+- HK-7 与子午线若不加权重，`orange theme / minimalist` 风格基底会压过主体（机器人变成蛋形，子午线变成大楼）。
+- 冷色点缀需要 `1.3::` 以上权重才能在橙色主调中出现。
+- API 调用需带浏览器 User-Agent，否则 Cloudflare 返回 403（error code 1010）。
