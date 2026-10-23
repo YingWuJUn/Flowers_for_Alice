@@ -1,7 +1,8 @@
-import json, os, sys, io, zipfile, random, urllib.request
+import base64, json, os, sys, io, zipfile, random, urllib.request
 STYLE = "limited palette, orange theme, three-tone, flat color, high contrast, no gradients, cut-paper style, graphic shapes, sharp shadow shapes, cream white highlights, dark brown background, subtle dot pattern background, minimalist, clean silhouette, best quality, very aesthetic"
 NEG = "gradient, realistic, 3d, photo, blurry, lineart heavy, sketch, extra colors, rainbow, neon, text, watermark, signature, lowres, bad hands, extra fingers, deformed, nsfw"
-def gen(prompt, out, w=832, h=1216, seed=None, model="nai-diffusion-4-5-full", style=STYLE, neg=NEG):
+def gen(prompt, out, w=832, h=1216, seed=None, model="nai-diffusion-4-5-full", style=STYLE, neg=NEG, vibes=None):
+    """vibes: [(编码后的 vibe 文件路径, 强度)]，用于 Vibe Transfer 风格参考"""
     seed = seed or random.randint(1, 2**32-1)
     full = prompt + ", " + style
     body = {"input": full, "model": model, "action": "generate", "parameters": {
@@ -11,6 +12,11 @@ def gen(prompt, out, w=832, h=1216, seed=None, model="nai-diffusion-4-5-full", s
         "v4_prompt": {"caption": {"base_caption": full, "char_captions": []}, "use_coords": False, "use_order": True},
         "v4_negative_prompt": {"caption": {"base_caption": neg, "char_captions": []}, "legacy_uc": False},
     }}
+    if vibes:
+        body["parameters"].update({
+            "reference_image_multiple": [base64.b64encode(open(v, "rb").read()).decode() for v, _ in vibes],
+            "reference_strength_multiple": [st for _, st in vibes],
+            "reference_information_extracted_multiple": [1.0 for _ in vibes]})
     req = urllib.request.Request("https://image.novelai.net/ai/generate-image", data=json.dumps(body).encode(),
         headers={"Authorization": "Bearer " + os.environ["NOVELAI_API_TOKEN"], "Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "Origin": "https://novelai.net", "Referer": "https://novelai.net/"})
     try:

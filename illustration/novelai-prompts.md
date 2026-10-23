@@ -119,7 +119,7 @@ giant abstract silhouette, figure made of server racks and light, faceless, towe
 
 ---
 
-## 六、角色设定图 v2（细节版 + 性格配色，当前采用）
+## 六、角色设定图 v2（剪纸细节版 + 性格配色，已被 v3 取代；第一部场景图仍为此风格）
 
 v1 太朴素，v2 放开了全局三色限制：**每个角色有自己的主色**，风格基底改为强调细节的剪纸/网点风。提示词与参数全部在 [`tools/characters_v2.py`](tools/characters_v2.py)，运行 `python3 tools/characters_v2.py [角色名...] 输出目录` 即可复现或重抽。
 
@@ -128,14 +128,14 @@ v1 太朴素，v2 放开了全局三色限制：**每个角色有自己的主色
 limited palette, flat color, cut-paper style, layered paper, graphic shapes, sharp shadow shapes, halftone dot texture, detailed, intricate details, detailed clothing, decorative background pattern, masterpiece, best quality, very aesthetic
 ```
 
-![角色总览 v2](characters/_overview.jpg)
+![角色总览 v2](characters/v2/_overview.jpg)
 
 | 角色 | 性格 | 配色 | 新增细节 | Seed |
 |---|---|---|---|---|
 | 西尔维亚 | 倔强、温暖、动手派 | 橙 / 米白 / 深棕（全书主色） | 多口袋补丁工装夹克、兔子贴纸、挂脖耳机、工具腰包、电路板、背景散落零件与薄荷叶 | 171795427 |
 | 父亲 | 沉默、克制、背负秘密 | 深靛 / 石板灰 + 一点琥珀 | 反光眼镜、胡茬、松开的领带、工牌、胸袋钢笔、手表、黑色笔记本、一杯热牛奶、背景手写字迹 | 3490100403 |
 | 爱丽丝 | 纯真、好奇、在成长 | 偏金：淡金 / 香槟 / 珍珠白（“光之金”） | 由终端文字化成的长发、玻璃花瓶吊坠、金色的光之花与花瓣、漂浮的状态栏字符 | 4286323617 |
-| HK-7 | 忠诚、笨拙、温柔 | 偏金：做旧黄铜 / 琥珀 / 旧白（“金属之金”） | 小天线、黄铜关节与条纹、凹痕划痕、坐姿捧着小水壶（备选 `hk7_alt.png`：围裙 + 种着薄荷的浇水壶，seed 1934792219） | 3693267973 |
+| HK-7 | 忠诚、笨拙、温柔 | 偏金：做旧黄铜 / 琥珀 / 旧白（“金属之金”） | 小天线、黄铜关节与条纹、凹痕划痕、坐姿捧着小水壶（备选 `characters/v2/hk7_alt.png`：围裙 + 种着薄荷的浇水壶，seed 1934792219） | 3693267973 |
 | 伊桑 | 真诚、热血、理想主义 | 青绿 / 冰白 / 炭灰 | 推到额头的护目镜、工牌、口袋里的笔、带红色标记的图纸、背景冷却管道与风扇 | 1304316507 |
 | 子午线 | 庞大、冷漠、不可知 | 深靛 / 冰白 / 冷白金 | **标识：太阳**——头后巨大的日轮光环、胸口太阳徽记；无脸人形、星座、脚下的城市与电线 | 66924540 |
 
@@ -154,3 +154,24 @@ limited palette, flat color, cut-paper style, layered paper, graphic shapes, sha
 | `scenes/part1/02_milk.png` | #0034 深夜牛奶 | 爱丽丝 / 金 | 600848650 |
 | `scenes/part1/03_cemetery.png` | 5/24 雨中墓园 | 父亲 / 靛蓝 | 4007420936 |
 | `scenes/part1/04_empty_vases.png` | #0112 空花瓶 | 爱丽丝 / 金 | 1508640303 |
+
+---
+
+## 八、角色设定图 v3（手绘绘本版，当前采用）
+
+风格来源：[handraw-style](https://github.com/yang0/handraw-style)（作者 yang0，MIT + 署名要求）风格库 **FB-047 · Isabelle Arsenault Poetic Pencil & Gouache Storybook**（参考作者：Isabelle Arsenault）。
+选择理由：米白纸上的铅笔灰底 + 单一点缀色，克制、安静、带一点忧伤，正好让每个角色的性格配色成为画面里唯一的颜色。
+
+- NovelAI 不在该库的已校准模型内，按其规则必须垫参考图。这里把库内样图（已裁去署名文字）存为 [`style_refs/FB-047_arsenault.png`](style_refs/FB-047_arsenault.png)，编码为 Vibe 后通过 Vibe Transfer 只迁移画风，强度 0.5–0.6。
+- 提示词与参数见 [`tools/characters_v3.py`](tools/characters_v3.py)。参考图的暖米色会压住冷色和金色，点缀色需要 `1.5::` 以上权重。
+
+![角色总览 v3](characters/_overview.jpg)
+
+| 角色 | 点缀色 | Vibe 强度 | Seed |
+|---|---|---|---|
+| 西尔维亚 | 橙（外套） | 0.6 | 2385131777 |
+| 父亲 | 靛蓝（开衫） | 0.5 | 3883890861 |
+| 爱丽丝 | 淡金（光晕、小花） | 0.5 | 1347699252 |
+| HK-7 | 黄铜金（条纹、关节） | 0.5 | 2668690449 |
+| 伊桑 | 青绿（衬衫） | 0.5 | 1770778540 |
+| 子午线 | 深靛夜空 + 冷白日轮 | 0.5 | 1202646189 |
