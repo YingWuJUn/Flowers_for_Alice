@@ -25,9 +25,11 @@ CHARS = {
               "bandaged hands, holding screwdriver, patch, badge, jeans, sneakers, motion lines, full body",
     "father": "1boy, solo, mature male, middle-aged, grey hair, streaked hair, short hair, glasses, facial hair, stubble, tired, serious, "
               "1.5::blue cardigan::, collared shirt, lanyard, id card, holding notebook, holding mug, milk, full body, standing",
-    "alice":  "1girl, solo, ghost, transparent, glowing, 1.4::yellow theme::, golden light, long hair, floating hair, "
-              ":d, open mouth, blush, happy, sparkling eyes, looking at viewer, outstretched arms, arms up, "
-              "white dress, pendant, vase, petals, sparkle, floating, full body",
+    "alice":  "1girl, solo, ghost, transparent, glowing, 1.4::yellow theme::, golden light, long hair, floating hair, light smile, "
+              "half-closed eyes, white dress, pendant, vase, petals, flower, floating, full body",
+    # 金发试验版：在上一版基础上只加金发
+    "alice_blonde": "1girl, solo, ghost, transparent, glowing, 1.4::yellow theme::, golden light, 1.4::blonde hair::, long hair, "
+                    "floating hair, light smile, half-closed eyes, white dress, pendant, vase, petals, flower, floating, full body",
     "hk7":    "no humans, solo, 1.4::humanoid robot::, old, damaged, round head, one-eyed, camera, antenna, "
               "1.4::gold trim::, yellow stripes, mechanical joints, bandaged leg, sitting, holding watering can, full body",
     "ethan":  "1boy, solo, young man, short hair, messy hair, black hair, smile, open mouth, "
