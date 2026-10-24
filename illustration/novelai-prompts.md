@@ -193,9 +193,11 @@ NovelAI 的图像模型是按 Danbooru 标签训练的，所以 v4 把 v3 的英
 
 | 角色 | 版本 | Seed |
 |---|---|---|
-| 西尔维亚 | v4 | 3620746427 |
+| 西尔维亚 | v4 元气版 | 1380833547（备选 `sylvia_alt.png`：眨眼咧嘴笑版，seed 101916536；原安静版移至 `characters/v4/`，seed 3620746427） |
 | 父亲 | v4 | 3719933818 |
-| 爱丽丝 | v4 | 3234635755 |
+| 爱丽丝 | v4 元气版 | 4208501454（原安静版移至 `characters/v4/`，seed 3234635755） |
 | HK-7 | v4 | 2177387971 |
 | 伊桑 | v4 | 3293825572 |
 | 子午线 | v3（见第八节） | 1202646189 |
+
+**元气少女版（西尔维亚、爱丽丝）**：去掉 `tired`、`determined`、`half-closed eyes`，改用标签库中的 `:d`（咧嘴笑）、`;d`（单眼咧嘴笑）、`grin`、`fang`（虎牙）、`ahoge`（呆毛）、`sparkling eyes`（星星眼）、`bright pupils`、`blush`、`v`（胜利手势）、`leaning forward`、`motion lines`；爱丽丝用 `arms up`、`outstretched arms`、`sparkle`。

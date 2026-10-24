@@ -18,13 +18,16 @@ NEG_V4 = ("lowres, bad anatomy, bad hands, text, error, missing fingers, extra d
           "3d, realistic, photo, anime screencap, colorful, multicolored")
 
 CHARS = {
-    "sylvia": "1girl, solo, teenage, long hair, wavy hair, messy hair, bangs, tired, light smile, determined, "
+    # 元气少女版：去掉 tired / determined，换成咧嘴笑、虎牙、呆毛、动态姿势
+    "sylvia": "1girl, solo, teenage, long hair, wavy hair, messy hair, ahoge, bangs, bright pupils, sparkling eyes, "
+              ":d, grin, fang, blush, happy, looking at viewer, leaning forward, ;d, v, "
               "1.4::orange jacket::, oversized clothes, open jacket, sleeves pushed up, headphones around neck, "
-              "bandaged hands, holding screwdriver, patch, badge, jeans, sneakers, full body, standing",
+              "bandaged hands, holding screwdriver, patch, badge, jeans, sneakers, motion lines, full body",
     "father": "1boy, solo, mature male, middle-aged, grey hair, streaked hair, short hair, glasses, facial hair, stubble, tired, serious, "
               "1.5::blue cardigan::, collared shirt, lanyard, id card, holding notebook, holding mug, milk, full body, standing",
-    "alice":  "1girl, solo, ghost, transparent, glowing, 1.4::yellow theme::, golden light, long hair, floating hair, light smile, "
-              "half-closed eyes, white dress, pendant, vase, petals, flower, floating, full body",
+    "alice":  "1girl, solo, ghost, transparent, glowing, 1.4::yellow theme::, golden light, long hair, floating hair, "
+              ":d, open mouth, blush, happy, sparkling eyes, looking at viewer, outstretched arms, arms up, "
+              "white dress, pendant, vase, petals, sparkle, floating, full body",
     "hk7":    "no humans, solo, 1.4::humanoid robot::, old, damaged, round head, one-eyed, camera, antenna, "
               "1.4::gold trim::, yellow stripes, mechanical joints, bandaged leg, sitting, holding watering can, full body",
     "ethan":  "1boy, solo, young man, short hair, messy hair, black hair, smile, open mouth, "
