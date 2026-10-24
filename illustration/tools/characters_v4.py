@@ -28,8 +28,10 @@ CHARS = {
     "alice":  "1girl, solo, ghost, transparent, glowing, 1.4::yellow theme::, golden light, long hair, floating hair, light smile, "
               "half-closed eyes, white dress, pendant, vase, petals, flower, floating, full body",
     # 金发试验版：在上一版基础上只加金发
+    # 金发版：金发 + 怀里捧着发光的花瓶（结合上一版的构图）
     "alice_blonde": "1girl, solo, ghost, transparent, glowing, 1.4::yellow theme::, golden light, 1.4::blonde hair::, long hair, "
-                    "floating hair, light smile, half-closed eyes, white dress, pendant, vase, petals, flower, floating, full body",
+                    "floating hair, light smile, half-closed eyes, white dress, pendant, 1.4::holding vase::, "
+                    "1.3::glowing flowers::, light particles, petals, floating, full body",
     "hk7":    "no humans, solo, 1.4::humanoid robot::, old, damaged, round head, one-eyed, camera, antenna, "
               "1.4::gold trim::, yellow stripes, mechanical joints, bandaged leg, sitting, holding watering can, full body",
     "ethan":  "1boy, solo, young man, short hair, messy hair, black hair, smile, open mouth, "
